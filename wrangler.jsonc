@@ -1,10 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "1407labs-website",
-  "main": "src/index.js",
+  "main": "worker/index.ts",
   "compatibility_date": "2026-10-19",
   "assets": {
-    "directory": "./public",
+    // Vite builds the site into ./dist (run `npm run build` first).
+    "directory": "./dist",
     "binding": "ASSETS",
     // Run the Worker before serving assets so the www -> apex redirect always applies.
     "run_worker_first": true

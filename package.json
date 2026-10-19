@@ -2,11 +2,17 @@
   "name": "1407labs-website",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "dev": "vite",
+    "build": "tsc && tsc -p worker && vite build",
+    "preview": "npm run build && wrangler dev",
+    "deploy": "npm run build && wrangler deploy"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^5.20261019.1",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
     "wrangler": "^4.151.1"
   }
 }

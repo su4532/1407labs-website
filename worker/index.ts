@@ -1,4 +1,8 @@
-// Serves the static site from ./public and sends www.1407labs.com to the apex domain.
+// Serves the built site from ./dist and sends www.1407labs.com to the apex domain.
+interface Env {
+  ASSETS: Fetcher;
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -10,4 +14,4 @@ export default {
 
     return env.ASSETS.fetch(request);
   },
-};
+} satisfies ExportedHandler<Env>;
