@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>1407 Labs</title>
+  <meta name="description" content="1407 Labs — an independent studio building software and experiments.">
+  <meta name="theme-color" content="#0b0b0c">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230b0b0c'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='12' font-weight='700' fill='%23c6f36b' text-anchor='middle'%3E14%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0b0c;
+      --fg: #f2f2ef;
+      --muted: #8b8b86;
+      --line: #222224;
+      --accent: #c6f36b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { height: 100%; }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: Inter, system-ui, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      background-position: center center;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      background: radial-gradient(ellipse at 50% 40%, transparent 0%, var(--bg) 70%);
+      pointer-events: none;
+    }
+    header, main, footer { position: relative; z-index: 1; width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-top: 28px;
+      font-family: "JetBrains Mono", monospace; font-size: 14px;
+    }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 600; letter-spacing: -0.01em; }
+    .logo-mark {
+      width: 28px; height: 28px; border-radius: 7px;
+      background: var(--accent); color: var(--bg);
+      display: grid; place-items: center; font-size: 12px; font-weight: 700;
+    }
+    .status { display: flex; align-items: center; gap: 8px; color: var(--muted); }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 12px var(--accent); animation: pulse 2s ease-in-out infinite; }
+    @keyframes pulse { 50% { opacity: .35; } }
+    main { flex: 1; display: flex; flex-direction: column; justify-content: center; padding-top: 64px; padding-bottom: 64px; }
+    .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 13px; color: var(--accent); margin-bottom: 24px; }
+    h1 {
+      font-size: clamp(44px, 9vw, 104px);
+      line-height: 0.95; letter-spacing: -0.045em; font-weight: 700;
+      max-width: 12ch;
+    }
+    h1 .dim { color: var(--muted); }
+    p.lede { margin-top: 28px; font-size: clamp(17px, 2vw, 20px); line-height: 1.55; color: var(--muted); max-width: 46ch; }
+    .grid {
+      margin-top: 72px;
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line);
+    }
+    .cell { padding: 24px 24px 0 0; }
+    .cell + .cell { padding-left: 24px; border-left: 1px solid var(--line); }
+    .cell .num { font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted); }
+    .cell h3 { margin-top: 10px; font-size: 17px; font-weight: 500; }
+    .cell p { margin-top: 6px; font-size: 15px; color: var(--muted); line-height: 1.5; }
+    footer {
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      padding-bottom: 28px;
+      font-family: "JetBrains Mono", monospace; font-size: 12px; color: var(--muted);
+    }
+    @media (max-width: 720px) {
+      .grid { grid-template-columns: 1fr; }
+      .cell, .cell + .cell { padding: 20px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo"><span class="logo-mark">14</span>1407 Labs</div>
+    <div class="status"><span class="dot"></span>Building</div>
+  </header>
+
+  <main>
+    <div class="eyebrow">// est. 2026</div>
+    <h1>Small lab. <span class="dim">Big experiments.</span></h1>
+    <p class="lede">1407 Labs is an independent studio designing and shipping software, tools, and ideas worth trying. Something is in the works — check back soon.</p>
+
+    <section class="grid">
+      <div class="cell">
+        <div class="num">01</div>
+        <h3>Build</h3>
+        <p>Products made with care, from first sketch to shipped.</p>
+      </div>
+      <div class="cell">
+        <div class="num">02</div>
+        <h3>Experiment</h3>
+        <p>Prototypes and side projects that test what's possible.</p>
+      </div>
+      <div class="cell">
+        <div class="num">03</div>
+        <h3>Share</h3>
+        <p>Notes and open work from inside the lab.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>&copy; <span id="y">2026</span> 1407 Labs</span>
+    <span>1407labs.com</span>
+  </footer>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
