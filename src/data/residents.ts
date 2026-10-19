@@ -9,7 +9,7 @@ export interface Resident {
 }
 
 export const residents: Resident[] = [
-  { name: "Ishaan Awasthi", website: "https://ishaanawasthi.com", photo: "/residents/ishaan-awasthi.jpg" }, // switch to veryishaan.com once it's live
+  { name: "Ishaan Awasthi", website: "https://veryishaan.com", photo: "/residents/ishaan-awasthi.jpg" },
   { name: "Divij Chawla", website: "https://divijchawla.com", photo: "/residents/divij-chawla.jpg" },
   { name: "Agasthya Gangavarapu", website: "https://www.agasthya.info", photo: "/residents/agasthya-gangavarapu.jpg" },
   { name: "Douglas Lin", website: "https://douglas-lin.net", photo: "/residents/douglas-lin.jpg" },
