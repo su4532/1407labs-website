@@ -11,7 +11,8 @@
   backdrop-filter: blur(var(--frame-blur)) saturate(1.7);
   border: 1px solid var(--frame-edge);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55), var(--window-shadow);
-  transition: opacity 0.22s ease, transform 0.22s ease, max-width 0.5s var(--ease), margin 0.5s var(--ease);
+  translate: var(--dx, 0) var(--dy, 0); /* drag offset (fx/windows.ts) */
+  transition: opacity 0.22s ease, transform 0.22s ease, translate 0.35s var(--ease), max-width 0.5s var(--ease), margin 0.5s var(--ease);
 }
 /* diagonal streaks of reflected light across the glass frame */
 .win::before {
@@ -30,6 +31,10 @@
   display: flex; align-items: center; gap: 8px;
   height: 34px;
   padding-left: 5px;
+  cursor: default;
+  touch-action: none; /* dragging the title bar moves the window, not the page */
+  user-select: none;
+  -webkit-user-select: none;
 }
 .win-icon { width: 18px; height: 18px; flex: none; }
 .win-icon svg { width: 100%; height: 100%; }
@@ -100,6 +105,8 @@
 .win.is-min > :not(.win-titlebar) { display: none; }
 .win.is-max { margin-inline: calc(50% - 50vw + 12px); }
 .win.is-closing { opacity: 0; transform: scale(0.94); }
+.win.is-front { z-index: 40; }
+.win.is-dragging { transition: none; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55), 0 40px 90px -20px rgba(0, 28, 64, 0.7), 0 4px 14px rgba(0, 28, 64, 0.3); }
 
 /* ============ buttons ============ */
 .btn {
