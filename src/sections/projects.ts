@@ -11,18 +11,18 @@ function card(p: Project, i: number): string {
       </div>
       <h3 class="project-name">${p.name}</h3>
       <p class="project-desc">${p.description}</p>
-      <p class="project-by">by ${p.by}</p>
       <span class="project-bubble" aria-hidden="true"></span>
     </${tag}>`;
 }
 
 export function renderProjects(): string {
+  if (projects.length === 0) return "";
   const categories = ["All", ...new Set(projects.map((p) => p.category))];
   return `
   <section class="section projects" id="projects">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">III — Projects</p>
+        <p class="eyebrow">Projects</p>
         <h2 class="display">Currently <em>on the stove.</em></h2>
         <p class="lead">Things being built under this roof right now. Some will change the world. Some will change the thermostat.</p>
       </div>

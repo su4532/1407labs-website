@@ -107,7 +107,7 @@ export function renderHero(): string {
       <p class="hero-tagline"><span data-tagline>${taglines[0]}</span></p>
       <div class="hero-actions">
         <a class="btn btn-aero" href="#residents">Meet the residents</a>
-        <a class="btn btn-glass" href="#projects">See what's cooking</a>
+        <a class="btn btn-glass" href="#lore">Read the lore</a>
       </div>
     </div>
 

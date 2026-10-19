@@ -1,4 +1,4 @@
-/* Frutiger Aero building blocks: glass panels, glossy buttons, chips, orbs, bubbles, nav. */
+/* Frutiger Aero building blocks: glass panels, glossy buttons, chips, bubbles, nav. */
 
 /* ---- glass panel ---- */
 .glass {
@@ -103,34 +103,6 @@
   background: linear-gradient(180deg, #7fe0ff 0%, #22a7e0 50%, #0e8bd0 51%, #3fc6f2 100%);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 6px 16px -6px rgba(13, 143, 212, 0.6);
   text-shadow: 0 1px 1px rgba(0, 70, 120, 0.4);
-}
-
-/* ---- glossy orb (resident avatar) ---- */
-.orb {
-  --h: var(--hue, 195);
-  position: relative;
-  width: 84px; aspect-ratio: 1;
-  border-radius: 50%;
-  display: grid; place-items: center;
-  background:
-    radial-gradient(circle at 50% 120%, hsl(calc(var(--h) - 40) 90% 70% / 0.9), transparent 60%),
-    radial-gradient(circle at 50% 40%, hsl(var(--h) 85% 58%), hsl(calc(var(--h) + 15) 80% 34%));
-  box-shadow:
-    inset 0 -10px 20px hsl(calc(var(--h) - 30) 90% 75% / 0.6),
-    inset 0 4px 8px rgba(255, 255, 255, 0.4),
-    0 14px 30px -10px hsl(var(--h) 80% 35% / 0.7);
-}
-.orb::before {
-  content: "";
-  position: absolute; top: 6%; left: 16%; right: 16%; height: 44%;
-  border-radius: 50%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.05));
-}
-.orb span {
-  position: relative;
-  font: italic 40px/1 var(--serif);
-  color: #fff;
-  text-shadow: 0 2px 8px hsl(var(--h) 80% 25% / 0.6);
 }
 
 /* ---- bubbles ---- */

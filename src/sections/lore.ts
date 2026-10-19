@@ -1,7 +1,5 @@
 import { principles, rituals, overheard } from "../data/lore";
 
-const roman = ["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX", "X"];
-
 export function renderLore(): string {
   // Quotes are doubled so the marquee can loop seamlessly.
   const quotes = [...overheard, ...overheard].map((q) => `<span>${q}</span>`).join("");
@@ -10,18 +8,18 @@ export function renderLore(): string {
   <section class="section lore" id="lore">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">IV — Lore</p>
+        <p class="eyebrow">Lore</p>
         <h2 class="display">The 1407 <em>operating system.</em></h2>
         <p class="lead">Unwritten rules, now written. Ratified at 3 a.m. by whoever was still awake.</p>
       </div>
 
       <div class="lore-grid">
-        <ol class="principles glass reveal">
+        <ul class="principles glass reveal">
           ${principles
             .map(
-              (p, i) => `
+              (p) => `
             <li>
-              <span class="principle-num">${roman[i]}</span>
+              <span class="principle-mark" aria-hidden="true"></span>
               <div>
                 <p class="principle-text">${p.text}</p>
                 <p class="principle-aside">${p.aside}</p>
@@ -29,7 +27,7 @@ export function renderLore(): string {
             </li>`,
             )
             .join("")}
-        </ol>
+        </ul>
 
         <div class="rituals">
           <p class="eyebrow reveal">Rituals</p>

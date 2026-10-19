@@ -8,7 +8,7 @@ export const taglines = [
 
 export const about = {
   paragraphs: [
-    "Somewhere in the city there is an apartment where the lights never quite go off. Its residents build companies, train models, solder things, prove things, and occasionally cook.",
+    "Somewhere in the city there is an apartment where the lights never quite go off. Six people live there, and on most nights it is hard to tell whether they are working, arguing, or both.",
     "1407 Labs is not a laboratory. There is no funding, no ethics board, and only one whiteboard. It is a home for a small group of unreasonably ambitious people who decided the best way to do great work was to live next to each other while doing it.",
   ],
   // Little stat tiles under the About copy.

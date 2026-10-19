@@ -6,7 +6,7 @@ export function renderContact(): string {
     <div class="bubbles" data-bubbles="10" aria-hidden="true"></div>
     <div class="wrap">
       <div class="contact-panel glass reveal">
-        <p class="eyebrow">V — Contact</p>
+        <p class="eyebrow">Contact</p>
         <h2 class="display">Knock <em>on the door.</em></h2>
         <p class="lead">Collaborations, invitations, investment opportunities, complaints about the bell. We read everything, usually around 2 a.m.</p>
         <a class="btn btn-aero btn-lg" href="mailto:${contact.email}">${contact.email}</a>

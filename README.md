@@ -10,8 +10,8 @@ You almost never need to touch layout code. Content lives in `src/data/`:
 | File | What's in it |
 | --- | --- |
 | `src/data/site.ts` | Hero taglines, About copy + stat tiles, contact email & social links |
-| `src/data/residents.ts` | Resident cards (name, vibe, bio, what they're building, links, orb color) |
-| `src/data/projects.ts` | Project cards (category drives the filter chips automatically) |
+| `src/data/residents.ts` | Resident cards (name, website, photo in `public/residents/`) |
+| `src/data/projects.ts` | Project cards — the section stays hidden until this list has entries |
 | `src/data/lore.ts` | Operating-system principles, rituals, "overheard" quotes |
 
 ## Structure

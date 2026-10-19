@@ -5,7 +5,7 @@ export function renderAbout(): string {
   <section class="section about" id="about">
     <div class="wrap about-grid">
       <div class="section-head reveal">
-        <p class="eyebrow">I — The Apartment</p>
+        <p class="eyebrow">The Apartment</p>
         <h2 class="display">Not a lab. <em>A legend</em> with a lease.</h2>
       </div>
       <div class="about-copy reveal">

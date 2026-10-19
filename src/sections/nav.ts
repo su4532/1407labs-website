@@ -1,8 +1,10 @@
-// Floating glass navigation pill.
+import { projects } from "../data/projects";
+
+// Floating glass navigation pill. "Projects" only shows once there are projects to show.
 const links = [
   { href: "#about", label: "About" },
   { href: "#residents", label: "Residents" },
-  { href: "#projects", label: "Projects" },
+  ...(projects.length ? [{ href: "#projects", label: "Projects" }] : []),
   { href: "#lore", label: "Lore" },
 ];
 
