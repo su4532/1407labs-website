@@ -1,13 +1,11 @@
 /* Design tokens — change the whole look from here. */
 :root {
-  /* surfaces */
-  --page: #eef8fc;
-  --page-2: #e3f4ee;
-
-  /* ink */
-  --ink: #0a2b40;
-  --ink-soft: #3f6579;
-  --ink-faint: #7b9db0;
+  /* ink (inside windows) */
+  --ink: #1c2733;
+  --ink-soft: #4a5a6a;
+  --ink-faint: #8796a5;
+  --instruction: #0b3d8c; /* the deep blue of Vista dialog headings */
+  --link: #0066cc;
 
   /* aero palette */
   --aqua: #16b2e4;
@@ -17,21 +15,25 @@
   --lime: #b4ec5c;
   --sky: #8fd3f5;
 
-  /* glass */
-  --glass-top: rgba(255, 255, 255, 0.78);
-  --glass-bottom: rgba(255, 255, 255, 0.4);
-  --glass-edge: rgba(255, 255, 255, 0.9);
-  --glass-blur: 18px;
-  --shadow-soft: 0 30px 70px -30px rgba(9, 95, 150, 0.45), 0 4px 14px -6px rgba(9, 95, 150, 0.18);
+  /* window glass */
+  --frame-top: rgba(214, 238, 255, 0.62);
+  --frame-bottom: rgba(150, 198, 232, 0.42);
+  --frame-edge: rgba(16, 38, 60, 0.55);
+  --frame-blur: 16px;
+  --window-shadow: 0 24px 60px -18px rgba(0, 28, 64, 0.6), 0 3px 10px rgba(0, 28, 64, 0.25);
+
+  /* selection highlight (hover on tiles, active rows) */
+  --select-top: #eaf5fe;
+  --select-bottom: #cfe6fc;
+  --select-edge: #84acdd;
 
   /* type */
-  --serif: "Instrument Serif", "Cormorant Garamond", Georgia, serif;
-  --sans: "Instrument Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sans: "Source Sans 3", "Segoe UI", system-ui, -apple-system, sans-serif;
 
   /* layout */
-  --radius: 28px;
-  --radius-sm: 16px;
-  --max: 1200px;
-  --gutter: clamp(20px, 4vw, 40px);
+  --radius: 8px;
+  --max: 1120px;
+  --gutter: clamp(14px, 4vw, 40px);
+  --taskbar-h: 46px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }

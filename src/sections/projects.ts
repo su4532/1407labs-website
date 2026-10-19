@@ -1,17 +1,15 @@
 import { projects, type Project } from "../data/projects";
+import { aeroWindow } from "./window";
+import { icons } from "./icons";
 
-function card(p: Project, i: number): string {
+function item(p: Project): string {
   const tag = p.href ? "a" : "article";
   const href = p.href ? ` href="${p.href}"` : "";
   return `
-    <${tag} class="project glass reveal" data-category="${p.category}"${href} style="--d:${(i % 4) * 70}ms">
-      <div class="project-top">
-        <span class="chip">${p.category}</span>
-        <span class="project-status"><i></i>${p.status}</span>
-      </div>
+    <${tag} class="project" data-category="${p.category}"${href}>
       <h3 class="project-name">${p.name}</h3>
+      <p class="project-meta">${p.category} · ${p.status}</p>
       <p class="project-desc">${p.description}</p>
-      <span class="project-bubble" aria-hidden="true"></span>
     </${tag}>`;
 }
 
@@ -21,22 +19,20 @@ export function renderProjects(): string {
   return `
   <section class="section projects" id="projects">
     <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Projects</p>
-        <h2 class="display">Currently <em>on the stove.</em></h2>
-        <p class="lead">Things being built under this roof right now. Some will change the world. Some will change the thermostat.</p>
-      </div>
-      <div class="filters reveal" role="toolbar" aria-label="Filter projects">
-        ${categories
-          .map(
-            (c, i) =>
-              `<button class="chip chip-btn${i === 0 ? " is-active" : ""}" data-filter="${c}" aria-pressed="${i === 0}">${c}</button>`,
-          )
-          .join("")}
-      </div>
-      <div class="project-grid">
-        ${projects.map(card).join("")}
-      </div>
+      ${aeroWindow({
+        id: "projects",
+        title: "Projects",
+        icon: icons.projects,
+        body: `
+          <h2 class="instruction" style="margin-bottom:24px">Projects</h2>
+          <div class="filters" role="toolbar" aria-label="Filter projects">
+            ${categories
+              .map((c, i) => `<button class="vbtn filter" data-filter="${c}" aria-pressed="${i === 0}">${c}</button>`)
+              .join("")}
+          </div>
+          <div class="project-grid">${projects.map(item).join("")}</div>`,
+        status: `<span>${projects.length} items</span>`,
+      })}
     </div>
   </section>`;
 }
@@ -47,11 +43,7 @@ export function initProjectFilter(): void {
   buttons.forEach((btn) =>
     btn.addEventListener("click", () => {
       const filter = btn.dataset.filter;
-      buttons.forEach((b) => {
-        const active = b === btn;
-        b.classList.toggle("is-active", active);
-        b.setAttribute("aria-pressed", String(active));
-      });
+      buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === btn)));
       cards.forEach((c) => {
         c.hidden = filter !== "All" && c.dataset.category !== filter;
       });

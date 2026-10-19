@@ -16,40 +16,62 @@ function initTagline(): void {
   }, 4200);
 }
 
-/** The hero badge reads the visitor's clock and reports on the apartment accordingly. */
-function initClock(): void {
-  const el = document.querySelector<HTMLElement>("[data-clock]");
-  if (!el) return;
-  const update = () => {
-    const now = new Date();
-    const h = now.getHours();
-    const time = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
-    const mood =
-      h < 5 ? "peak productivity at 1407" :
-      h < 9 ? "someone at 1407 hasn't slept yet" :
-      h < 13 ? "1407 is technically awake" :
-      h < 18 ? "1407 is in deep work" :
-      h < 22 ? "dinner pitches underway at 1407" :
-      "the night shift is clocking in at 1407";
-    el.textContent = `${time} — ${mood}`;
-  };
-  update();
-  setInterval(update, 30_000);
+function mood(h: number): string {
+  return h < 5 ? "Peak productivity." :
+    h < 9 ? "Someone hasn't slept yet." :
+    h < 13 ? "Technically awake." :
+    h < 18 ? "Deep work in progress." :
+    h < 22 ? "Dinner pitches underway." :
+    "The night shift is clocking in.";
 }
 
-/** Gentle parallax on the landscape layers as the pointer moves. */
+/** Analog clock gadget, the status gadget, and the taskbar tray clock all read the visitor's time. */
+function initClocks(): void {
+  const hands = {
+    h: document.querySelector<SVGElement>('[data-hand="h"]'),
+    m: document.querySelector<SVGElement>('[data-hand="m"]'),
+    s: document.querySelector<SVGElement>('[data-hand="s"]'),
+  };
+  const status = document.querySelector<HTMLElement>("[data-clock]");
+  const tray = document.querySelector<HTMLElement>("[data-tray-clock]");
+  // Hand angles keep growing instead of wrapping to 0, so the CSS transition never spins backwards.
+  let turns = 0;
+  let lastSec = -1;
+
+  const tick = () => {
+    const now = new Date();
+    const s = now.getSeconds();
+    const m = now.getMinutes() + s / 60;
+    const h = (now.getHours() % 12) + m / 60;
+    if (lastSec !== -1 && s < lastSec) turns++;
+    lastSec = s;
+    hands.h?.style.setProperty("transform", `rotate(${h * 30}deg)`);
+    hands.m?.style.setProperty("transform", `rotate(${m * 6}deg)`);
+    hands.s?.style.setProperty("transform", `rotate(${(turns * 60 + s) * 6}deg)`);
+
+    const time = now.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    if (status) status.textContent = `${time}. ${mood(now.getHours())}`;
+    if (tray) {
+      tray.children[0].textContent = time;
+      tray.children[1].textContent = now.toLocaleDateString([], { month: "numeric", day: "numeric", year: "numeric" });
+    }
+  };
+  tick();
+  setInterval(tick, 1000);
+}
+
+/** Gentle parallax on the wallpaper as the pointer moves. */
 function initParallax(): void {
-  const hero = document.querySelector<HTMLElement>(".hero");
-  if (!hero || reducedMotion || !matchMedia("(pointer: fine)").matches) return;
-  hero.addEventListener("pointermove", (e) => {
-    const r = hero.getBoundingClientRect();
-    hero.style.setProperty("--px", ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
-    hero.style.setProperty("--py", ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+  const wallpaper = document.querySelector<HTMLElement>(".wallpaper");
+  if (!wallpaper || reducedMotion || !matchMedia("(pointer: fine)").matches) return;
+  window.addEventListener("pointermove", (e) => {
+    wallpaper.style.setProperty("--px", (e.clientX / innerWidth - 0.5).toFixed(3));
+    wallpaper.style.setProperty("--py", (e.clientY / innerHeight - 0.5).toFixed(3));
   });
 }
 
 export function initHero(): void {
   initTagline();
-  initClock();
+  initClocks();
   initParallax();
 }
