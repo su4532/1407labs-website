@@ -1,0 +1,190 @@
+/* Frutiger Aero building blocks: glass panels, glossy buttons, chips, orbs, bubbles, nav. */
+
+/* ---- glass panel ---- */
+.glass {
+  position: relative;
+  background: linear-gradient(180deg, var(--glass-top), var(--glass-bottom));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.5);
+  border: 1px solid var(--glass-edge);
+  border-radius: var(--radius);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.35),
+    var(--shadow-soft);
+}
+/* the curved "wet" highlight across the top half */
+.glass::before {
+  content: "";
+  position: absolute;
+  inset: 1px 1px 55% 1px;
+  border-radius: calc(var(--radius) - 1px) calc(var(--radius) - 1px) 50% 50% / calc(var(--radius) - 1px) calc(var(--radius) - 1px) 18% 18%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0));
+  pointer-events: none;
+}
+
+/* ---- buttons ---- */
+.btn {
+  position: relative;
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 48px;
+  padding: 0 26px;
+  border-radius: 999px;
+  font: 500 15px/1 var(--sans);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  overflow: hidden;
+  isolation: isolate;
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), filter 0.35s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0) scale(0.98); }
+.btn-sm { min-height: 38px; padding: 0 18px; font-size: 14px; }
+.btn-lg { min-height: 60px; padding: 0 34px; font-size: 17px; }
+
+/* glossy aqua candy button */
+.btn-aero {
+  color: #fff;
+  text-shadow: 0 1px 1px rgba(0, 70, 120, 0.45);
+  background: linear-gradient(180deg, #8fe6ff 0%, #2ab8ee 48%, #0d8fd4 52%, #34c3f2 100%);
+  border: 1px solid rgba(0, 100, 160, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.8),
+    inset 0 -6px 12px rgba(160, 240, 255, 0.55),
+    0 10px 24px -8px rgba(13, 143, 212, 0.65);
+}
+.btn-aero::before {
+  /* top gloss */
+  content: "";
+  position: absolute; inset: 2px 8px 50% 8px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.1));
+  z-index: -1;
+}
+.btn-aero::after {
+  /* sweeping shine on hover */
+  content: "";
+  position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.7s var(--ease);
+}
+.btn-aero:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -6px 12px rgba(160, 240, 255, 0.55), 0 14px 34px -8px rgba(13, 143, 212, 0.8), 0 0 0 6px rgba(22, 178, 228, 0.12); }
+.btn-aero:hover::after { left: 120%; }
+
+/* frosted glass button */
+.btn-glass {
+  color: var(--ink);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.45));
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 1px 0 #fff, 0 8px 22px -10px rgba(9, 95, 150, 0.45);
+}
+.btn-glass:hover { box-shadow: inset 0 1px 0 #fff, 0 12px 30px -10px rgba(9, 95, 150, 0.55), 0 0 0 6px rgba(255, 255, 255, 0.35); }
+
+/* ---- chips ---- */
+.chip {
+  display: inline-flex; align-items: center;
+  height: 30px; padding: 0 14px;
+  border-radius: 999px;
+  font: 500 12px/1 var(--sans);
+  letter-spacing: 0.06em;
+  color: var(--aqua-deep);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(220, 245, 255, 0.7));
+  border: 1px solid rgba(22, 178, 228, 0.25);
+  box-shadow: inset 0 1px 0 #fff;
+}
+.chip-btn { height: 40px; padding: 0 20px; font-size: 14px; transition: all 0.3s var(--ease); }
+.chip-btn:hover { border-color: rgba(22, 178, 228, 0.6); transform: translateY(-1px); }
+.chip-btn.is-active {
+  color: #fff;
+  border-color: rgba(0, 100, 160, 0.35);
+  background: linear-gradient(180deg, #7fe0ff 0%, #22a7e0 50%, #0e8bd0 51%, #3fc6f2 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 6px 16px -6px rgba(13, 143, 212, 0.6);
+  text-shadow: 0 1px 1px rgba(0, 70, 120, 0.4);
+}
+
+/* ---- glossy orb (resident avatar) ---- */
+.orb {
+  --h: var(--hue, 195);
+  position: relative;
+  width: 84px; aspect-ratio: 1;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background:
+    radial-gradient(circle at 50% 120%, hsl(calc(var(--h) - 40) 90% 70% / 0.9), transparent 60%),
+    radial-gradient(circle at 50% 40%, hsl(var(--h) 85% 58%), hsl(calc(var(--h) + 15) 80% 34%));
+  box-shadow:
+    inset 0 -10px 20px hsl(calc(var(--h) - 30) 90% 75% / 0.6),
+    inset 0 4px 8px rgba(255, 255, 255, 0.4),
+    0 14px 30px -10px hsl(var(--h) 80% 35% / 0.7);
+}
+.orb::before {
+  content: "";
+  position: absolute; top: 6%; left: 16%; right: 16%; height: 44%;
+  border-radius: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.05));
+}
+.orb span {
+  position: relative;
+  font: italic 40px/1 var(--serif);
+  color: #fff;
+  text-shadow: 0 2px 8px hsl(var(--h) 80% 25% / 0.6);
+}
+
+/* ---- bubbles ---- */
+.bubbles { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.bubble {
+  position: absolute;
+  bottom: -100px;
+  left: var(--x);
+  width: var(--s);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 28%, rgba(255, 255, 255, 0.95) 0 7%, rgba(255, 255, 255, 0.3) 14%, transparent 34%),
+    radial-gradient(circle at 50% 50%, transparent 58%, rgba(170, 238, 255, 0.35) 78%, rgba(255, 255, 255, 0.75) 100%);
+  box-shadow: inset 0 -3px 8px rgba(120, 220, 255, 0.35), 0 0 10px rgba(255, 255, 255, 0.25);
+  animation: rise var(--dur) linear var(--delay) infinite;
+  will-change: transform;
+}
+@keyframes rise {
+  0%   { transform: translate3d(0, 0, 0); opacity: 0; }
+  8%   { opacity: 1; }
+  50%  { transform: translate3d(var(--sway), -60vh, 0); }
+  92%  { opacity: 1; }
+  100% { transform: translate3d(0, -120vh, 0); opacity: 0; }
+}
+
+/* ---- floating nav ---- */
+.nav {
+  position: fixed;
+  top: 16px; left: 50%;
+  z-index: 50;
+  transform: translateX(-50%);
+  width: min(calc(100% - 24px), 760px);
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 8px 8px 8px 22px;
+  border-radius: 999px;
+  --glass-top: rgba(255, 255, 255, 0.5);
+  --glass-bottom: rgba(255, 255, 255, 0.22);
+  transition: background 0.4s var(--ease);
+}
+.nav::before { border-radius: 999px 999px 40% 40% / 999px 999px 30% 30%; }
+.nav.is-scrolled { --glass-top: rgba(255, 255, 255, 0.85); --glass-bottom: rgba(255, 255, 255, 0.6); }
+.nav-brand { position: relative; font: 26px/1 var(--serif); letter-spacing: -0.01em; }
+.nav-brand em { font-style: italic; color: var(--aqua-deep); margin-left: 4px; }
+.nav-links { position: relative; display: flex; gap: 4px; }
+.nav-links a {
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 14px; font-weight: 500;
+  color: var(--ink-soft);
+  transition: color 0.25s, background 0.25s;
+}
+.nav-links a:hover { color: var(--ink); background: rgba(255, 255, 255, 0.6); }
+
+@media (max-width: 680px) {
+  .nav-links { display: none; }
+}
