@@ -1,5 +1,5 @@
 // The residents of 1407, alphabetical by last name.
-// Photos go in public/residents/ — square images look best. Until a photo is set,
+// Photos go in public/residents/ — square images look best. Without a photo,
 // the card shows the resident's initials instead.
 
 export interface Resident {
@@ -9,10 +9,10 @@ export interface Resident {
 }
 
 export const residents: Resident[] = [
-  { name: "Ishaan Awasthi", website: "https://ishaanawasthi.com" }, // switch to veryishaan.com once it's live
-  { name: "Divij Chawla", website: "https://divijchawla.com" },
-  { name: "Agasthya Gangavarapu", website: "https://www.agasthya.info" },
-  { name: "Douglas Lin", website: "https://douglas-lin.net" },
-  { name: "Tejas Naladala", website: "https://tejasnaladala.com" },
-  { name: "Shayaan Uddin", website: "https://shayaan.ai" },
+  { name: "Ishaan Awasthi", website: "https://ishaanawasthi.com", photo: "/residents/ishaan-awasthi.jpg" }, // switch to veryishaan.com once it's live
+  { name: "Divij Chawla", website: "https://divijchawla.com", photo: "/residents/divij-chawla.jpg" },
+  { name: "Agasthya Gangavarapu", website: "https://www.agasthya.info", photo: "/residents/agasthya-gangavarapu.jpg" },
+  { name: "Douglas Lin", website: "https://douglas-lin.net", photo: "/residents/douglas-lin.jpg" },
+  { name: "Tejas Naladala", website: "https://tejasnaladala.com", photo: "/residents/tejas-naladala.jpg" },
+  { name: "Shayaan Uddin", website: "https://shayaan.ai", photo: "/residents/shayaan-uddin.jpg" },
 ];

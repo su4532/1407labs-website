@@ -8,7 +8,7 @@ function card(r: Resident, i: number): string {
   const initials = r.name.split(" ").map((p) => p[0]).join("");
   const domain = new URL(r.website).hostname.replace(/^www\./, "");
   const photo = r.photo
-    ? `<img src="${r.photo}" alt="${r.name}" loading="lazy" width="400" height="400">`
+    ? `<img src="${r.photo}" alt="${r.name}" loading="lazy" width="600" height="600">`
     : `<span class="resident-initials" aria-hidden="true">${initials}</span>`;
 
   return `
