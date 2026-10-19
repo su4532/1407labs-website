@@ -15,6 +15,7 @@
   position: absolute;
   inset: -3%;
   width: 106%; height: 106%;
+  max-width: none; /* overrides the global svg cap so it bleeds past both edges */
   z-index: -3;
   /* pointer parallax (set in fx/hero.ts) */
   transform: translate3d(calc(var(--px) * -18px), calc(var(--py) * -12px), 0);
@@ -79,12 +80,9 @@
   font-size: clamp(88px, 17vw, 260px);
   line-height: 0.82;
   letter-spacing: -0.035em;
-  /* glossy white-to-ice type */
-  background: linear-gradient(180deg, #ffffff 0%, #ffffff 46%, #dff6ff 54%, #ffffff 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0 6px 30px rgba(6, 70, 130, 0.35)) drop-shadow(0 1px 1px rgba(6, 70, 130, 0.25));
+  /* solid type + shadow: gradient-clipped text with a filter renders a visible box in some browsers */
+  color: #fff;
+  text-shadow: 0 6px 30px rgba(6, 70, 130, 0.35), 0 1px 1px rgba(6, 70, 130, 0.25);
 }
 .hero-labs { font-style: italic; padding-right: 0.06em; }
 

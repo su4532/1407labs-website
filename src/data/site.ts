@@ -20,11 +20,13 @@ export const about = {
   ],
 };
 
+export const repo = "https://github.com/su4532/1407labs-website";
+
 // Placeholder links — replace "#" with real URLs.
 export const contact = {
   email: "hello@1407labs.com",
   links: [
-    { label: "GitHub", href: "#" },
+    { label: "GitHub", href: repo },
     { label: "X / Twitter", href: "#" },
     { label: "Instagram", href: "#" },
   ],

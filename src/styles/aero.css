@@ -156,6 +156,19 @@
   transition: color 0.25s, background 0.25s;
 }
 .nav-links a:hover { color: var(--ink); background: rgba(255, 255, 255, 0.6); }
+.nav-actions { position: relative; display: flex; align-items: center; gap: 8px; }
+/* round glass icon button (GitHub) */
+.nav-icon {
+  display: grid; place-items: center;
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  color: var(--ink);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.5));
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  box-shadow: inset 0 1px 0 #fff, 0 6px 16px -8px rgba(9, 95, 150, 0.5);
+  transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease), color 0.25s;
+}
+.nav-icon:hover { color: var(--aqua-deep); transform: translateY(-1px); box-shadow: inset 0 1px 0 #fff, 0 10px 22px -8px rgba(9, 95, 150, 0.6); }
 
 @media (max-width: 680px) {
   .nav-links { display: none; }
